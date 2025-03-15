@@ -7,13 +7,19 @@ print(dt.head())
 print(dt.info())
 print(dt.describe())
 
-fig = px.bar(dt, x="Participant Number", y="Difference in Mean Performance Scores Pre- and Post-Intervention", color="Group",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",barmode='group',text="Difference in Mean Performance Scores Pre- and Post-Intervention")
-fig.update_traces(texttemplate='%{text:.2f}', textposition='outside')
-fig.update_xaxes(tickmode='linear')
-fig.show()
+# Passed 
 
-#fig = px.box(dt, x="Group", y="Difference in Mean Performance Scores Pre- and Post-Intervention",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups")
+# Bar + 表现前后均分差异
+#fig = px.bar(dt, x="Participant Number", y="Difference in Mean Performance Scores Pre- and Post-Intervention", color="Group",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",barmode='group',text="Difference in Mean Performance Scores Pre- and Post-Intervention")
+#fig.update_traces(texttemplate='%{text:.2f}', textposition='outside')
+#fig.update_xaxes(tickmode='linear')
 #fig.show()
+
+# Boxplot + 表现前后均分差异
+# fig = px.box(dt, x="Group", y="Difference in Mean Performance Scores Pre- and Post-Intervention",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",points="all")
+# fig.show()
+
+# Pending
 
 #fig = px.histogram(dt,x="Days",y="Overall Daily Performance Mean Score\t",color="Group",title="Overall Daily Performance Scores Between Groups",barmode='group',text_auto=False)
 #fig.show()
