@@ -7,14 +7,16 @@ print(dt.head())
 print(dt.info())
 print(dt.describe())
 
-fig = px.bar(dt, x="参与者编号", y="表现均分前后差异", color="分组",title="Wide-Form Input",barmode='group',text_auto=True)
+fig = px.bar(dt, x="Participant Number", y="Difference in Mean Performance Scores Pre- and Post-Intervention", color="Group",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",barmode='group',text="Difference in Mean Performance Scores Pre- and Post-Intervention")
+fig.update_traces(texttemplate='%{text:.2f}', textposition='outside')
+fig.update_xaxes(tickmode='linear')
 fig.show()
 
-fig = px.box(dt, x="分组", y="表现均分前后差异")
-fig.show()
+#fig = px.box(dt, x="Group", y="Difference in Mean Performance Scores Pre- and Post-Intervention",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups")
+#fig.show()
 
-fig = px.bar(dt,x="天数",y="全天表现均分",color="分组",title="组间每日表现均分",barmode='',text_auto=True)
-fig.show()
+#fig = px.histogram(dt,x="Days",y="Overall Daily Performance Mean Score\t",color="Group",title="Overall Daily Performance Scores Between Groups",barmode='group',text_auto=False)
+#fig.show()
 
 #fig = px.line(dt, x='天数', y='lifeExp', color='country', markers=True)
 #fig.show()
