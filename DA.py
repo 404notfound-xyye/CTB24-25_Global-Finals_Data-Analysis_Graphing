@@ -8,49 +8,54 @@ print(dt.head())
 print(dt.info())
 print(dt.describe())
 
-# Bar + 表现前后均分差异
-fig = px.bar(
+# BarCharts - 表现前后均分差异
+bar_c = px.bar(
     dt, 
     x="Participant Number", 
     y="Difference in Mean Performance Scores Pre- and Post-Intervention", 
-    color="Group",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",
+    color="Group",
+    title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",
     barmode='group',
     text="Difference in Mean Performance Scores Pre- and Post-Intervention"
 )
-fig.update_traces(
-    texttemplate='%{text:.2f}', 
+bar_c.update_traces(
+    texttemplate='%{text:.2f}', # 保留两位小数
     textposition='outside'
 )
-fig.update_xaxes(
+bar_c.update_xaxes(
     tickmode='linear'
 )
-fig.show()
 
-# Boxplot + 表现前后均分差异
-fig = px.box(
+bar_c.show()
+bar_c.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/BarCharts_表现前后均分差异/Bar+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
+
+# BoxPlots - 表现前后均分差异
+box_p = px.box(
     dt, 
     x="Group", 
     y="Difference in Mean Performance Scores Pre- and Post-Intervention",
     title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",
     points="all"
 )
-fig.show()
+box_p.show()
+box_p.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/BoxPlots_表现前后均分差异/Box+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
 
 # Histogram + 组间每日均分对比
-fig = px.histogram(
+his = px.histogram(
     dt,
     x="Days",
     y="Overall Daily Performance Mean Score",
     color="Group",
     title="Overall Daily Performance Scores Between Groups",
     barmode='group',
-    text_auto=".2f",
-    histfunc='avg'
+    text_auto=".2f", # 保留两位小数
+    histfunc='avg' # histfunc默认sum，avg按照group计算每日均值
 )
-fig.show()
+his.show()
+his.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/Histogram_组间每日均分对比/His+Overall_Daily_Performance_Scores_Between_Groups.html")
 
-# Line
-metrics = [
+# LineCharts - 每日方面表现变化
+metrics = [     # 折线绘制数据（列）
     "Learning Behaviors and Classroom Adaptation Mean Score",
     "Social Interaction Mean Score",
     "Emotion Regulation Mean Score",
@@ -58,25 +63,32 @@ metrics = [
     "Overall Daily Performance Mean Score"
 ]
 
-dt_mean = dt.groupby(["Days", "Group"], as_index=False)[metrics].mean()
-dt_long = dt_mean.melt(id_vars=["Days", "Group"], value_vars=metrics, 
-                        var_name="Metric", value_name="Mean Score")
+dt_mean = dt.groupby(["Days", "Group"], as_index=False)[metrics].mean() # 按Days/Group分组+计算分组中metrics列均值
+dt_long = dt_mean.melt(     # 转换长格式，让每个metrics和days/group对应一行
+    id_vars=["Days", "Group"],  # 保留列
+    value_vars=metrics, # 数据分解到新列名对应原数据
+    var_name="Metric", # 新列名
+    value_name="Mean Score"  # 对应每个metric的分数
+)
 
-dt_accompanied = dt_long[dt_long["Group"] == "Accompanied Group"]
-dt_non_accompanied = dt_long[dt_long["Group"] == "Non-Accompanied Group"]
+dt_accompanied = dt_long[dt_long["Group"] == "Accompanied Group"]   # 提取陪伴组数据
+dt_non_accompanied = dt_long[dt_long["Group"] == "Non-Accompanied Group"] # 提取非陪伴组数据
 
-fig = px.line(
+# LineCharts - 陪伴组
+line_acc = px.line(
     dt_accompanied, 
     x="Days", 
     y="Mean Score", 
     color="Metric",
     markers=True,  
     title="Performance Trends - Accompanied Group",
-    labels={"Days": "Dats", "Mean Score": "Mean Score"},
+    labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
-fig.show()
+line_acc.show()
+line_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
 
-fig = px.line(
+# LineCharts - 无陪伴组
+line_non_acc = px.line(
     dt_non_accompanied, 
     x="Days", 
     y="Mean Score", 
@@ -85,4 +97,5 @@ fig = px.line(
     title="Performance Trends - Non-Accompanied Group",
     labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
-fig.show()
+line_non_acc.show()
+line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
