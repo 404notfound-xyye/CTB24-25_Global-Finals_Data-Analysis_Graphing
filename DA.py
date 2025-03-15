@@ -21,8 +21,9 @@ print(dt.describe())
 
 # Pending
 
-#fig = px.histogram(dt,x="Days",y="Overall Daily Performance Mean Score\t",color="Group",title="Overall Daily Performance Scores Between Groups",barmode='group',text_auto=False)
-#fig.show()
+# Histogram + 组间每日均分对比
+fig = px.histogram(dt,x="Days",y="Overall Daily Performance Mean Score\t",color="Group",title="Overall Daily Performance Scores Between Groups",barmode='group',text_auto=".2f",histfunc='avg')
+fig.show()
 
 #fig = px.line(dt, x='天数', y='lifeExp', color='country', markers=True)
 #fig.show()
