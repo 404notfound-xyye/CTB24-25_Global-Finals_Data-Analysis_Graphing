@@ -19,11 +19,45 @@ print(dt.describe())
 # fig = px.box(dt, x="Group", y="Difference in Mean Performance Scores Pre- and Post-Intervention",title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",points="all")
 # fig.show()
 
+# Histogram + 组间每日均分对比
+# fig = px.histogram(dt,x="Days",y="Overall Daily Performance Mean Score",color="Group",title="Overall Daily Performance Scores Between Groups",barmode='group',text_auto=".2f",histfunc='avg')
+# fig.show()
+
 # Pending
 
-# Histogram + 组间每日均分对比
-fig = px.histogram(dt,x="Days",y="Overall Daily Performance Mean Score\t",color="Group",title="Overall Daily Performance Scores Between Groups",barmode='group',text_auto=".2f",histfunc='avg')
+metrics = [
+    "Learning Behaviors and Classroom Adaptation Mean Score",
+    "Social Interaction Mean Score",
+    "Emotion Regulation Mean Score",
+    "Repetitive Behaviors and Interests Mean Score",
+    "Overall Daily Performance Mean Score"
+]
+
+dt_mean = dt.groupby(["Days", "Group"], as_index=False)[metrics].mean()
+dt_long = dt_mean.melt(id_vars=["Days", "Group"], value_vars=metrics, 
+                        var_name="Metric", value_name="Mean Score")
+
+dt_accompanied = dt_long[dt_long["Group"] == "Accompanied Group"]
+dt_non_accompanied = dt_long[dt_long["Group"] == "Non-Accompanied Group"]
+
+fig = px.line(
+    dt_accompanied, 
+    x="Days", 
+    y="Mean Score", 
+    color="Metric",
+    markers=True,  
+    title="Performance Trends - Accompanied Group",
+    labels={"Days": "Dats", "Mean Score": "Mean Score"},
+)
 fig.show()
 
-#fig = px.line(dt, x='天数', y='lifeExp', color='country', markers=True)
-#fig.show()
+fig = px.line(
+    dt_non_accompanied, 
+    x="Days", 
+    y="Mean Score", 
+    color="Metric",
+    markers=True,  
+    title="Performance Trends - Non-Accompanied Group",
+    labels={"Days": "Days", "Mean Score": "Mean Score"},
+)
+fig.show()
