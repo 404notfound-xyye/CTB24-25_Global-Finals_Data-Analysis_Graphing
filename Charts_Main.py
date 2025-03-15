@@ -27,7 +27,7 @@ bar_c.update_xaxes(
 )
 
 bar_c.show()
-bar_c.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/BarCharts_表现前后均分差异/Bar+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
+bar_c.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/BarCharts_表现前后均分差异/Bar+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
 
 # BoxPlots - 表现前后均分差异
 box_p = px.box(
@@ -38,7 +38,7 @@ box_p = px.box(
     points="all"
 )
 box_p.show()
-box_p.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/BoxPlots_表现前后均分差异/Box+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
+box_p.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/BoxPlots_表现前后均分差异/Box+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
 
 # Histogram + 组间每日均分对比
 his = px.histogram(
@@ -52,7 +52,7 @@ his = px.histogram(
     histfunc='avg' # histfunc默认sum，avg按照group计算每日均值
 )
 his.show()
-his.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/Histogram_组间每日均分对比/His+Overall_Daily_Performance_Scores_Between_Groups.html")
+his.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/Histogram_组间每日均分对比/His+Overall_Daily_Performance_Scores_Between_Groups.html")
 
 # LineCharts - 每日方面表现变化
 metrics = [     # 折线绘制数据（列）
@@ -85,7 +85,7 @@ line_acc = px.line(
     labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
 line_acc.show()
-line_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
+line_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
 
 # LineCharts - 无陪伴组
 line_non_acc = px.line(
@@ -98,4 +98,4 @@ line_non_acc = px.line(
     labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
 line_non_acc.show()
-line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Results/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
+line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
