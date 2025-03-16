@@ -1,12 +1,13 @@
 import plotly.express as px
 import pandas as pd
 
-
 dt = pd.read_excel('/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Base_Data/Excel+ALL+ENG.xlsx')
 
 print(dt.head())
 print(dt.info())
 print(dt.describe())
+
+
 
 # BarCharts - 表现前后均分差异
 bar_c = px.bar(
@@ -29,6 +30,8 @@ bar_c.update_xaxes(
 bar_c.show()
 bar_c.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/BarCharts_表现前后均分差异/Bar+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
 
+
+
 # BoxPlots - 表现前后均分差异
 box_p = px.box(
     dt, 
@@ -37,8 +40,11 @@ box_p = px.box(
     title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",
     points="all"
 )
+
 box_p.show()
 box_p.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/BoxPlots_表现前后均分差异/Box+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
+
+
 
 # Histogram + 组间每日均分对比
 his = px.histogram(
@@ -51,8 +57,11 @@ his = px.histogram(
     text_auto=".2f", # 保留两位小数
     histfunc='avg' # histfunc默认sum，avg按照group计算每日均值
 )
+
 his.show()
 his.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/Histogram_组间每日均分对比/His+Overall_Daily_Performance_Scores_Between_Groups.html")
+
+
 
 # LineCharts - 每日方面表现变化
 metrics = [     # 折线绘制数据（列）
@@ -62,7 +71,6 @@ metrics = [     # 折线绘制数据（列）
     "Repetitive Behaviors and Interests Mean Score",
     "Overall Daily Performance Mean Score"
 ]
-
 dt_mean = dt.groupby(["Days", "Group"], as_index=False)[metrics].mean() # 按Days/Group分组+计算分组中metrics列均值
 dt_long = dt_mean.melt(     # 转换长格式，让每个metrics和days/group对应一行
     id_vars=["Days", "Group"],  # 保留列
@@ -70,7 +78,6 @@ dt_long = dt_mean.melt(     # 转换长格式，让每个metrics和days/group对
     var_name="Metric", # 新列名
     value_name="Mean Score"  # 对应每个metric的分数
 )
-
 dt_accompanied = dt_long[dt_long["Group"] == "Accompanied Group"]   # 提取陪伴组数据
 dt_non_accompanied = dt_long[dt_long["Group"] == "Non-Accompanied Group"] # 提取非陪伴组数据
 
@@ -84,6 +91,7 @@ line_acc = px.line(
     title="Performance Trends - Accompanied Group",
     labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
+
 line_acc.show()
 line_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
 
@@ -97,5 +105,6 @@ line_non_acc = px.line(
     title="Performance Trends - Non-Accompanied Group",
     labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
+
 line_non_acc.show()
 line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
