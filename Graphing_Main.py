@@ -1,7 +1,7 @@
 import plotly.express as px
 import pandas as pd
 
-dt = pd.read_excel('/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis/Base_Data/Excel+ALL+ENG.xlsx')
+dt = pd.read_excel('/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_Graphing/Base_Data/Excel+ALL+ENG.xlsx')
 
 print(dt.head())
 print(dt.info())
@@ -28,7 +28,7 @@ bar_c.update_xaxes(
 )
 
 bar_c.show()
-bar_c.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/BarCharts_表现前后均分差异/Bar+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
+bar_c.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/BarCharts_表现前后均分差异/Bar+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
 
 
 
@@ -42,7 +42,7 @@ box_p = px.box(
 )
 
 box_p.show()
-box_p.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/BoxPlots_表现前后均分差异/Box+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
+box_p.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/BoxPlots_表现前后均分差异/Box+Difference_in_Mean_Performance_Scores_Pre-_and_Post-Intervention_Between_Groups.html")
 
 
 
@@ -59,7 +59,7 @@ his = px.histogram(
 )
 
 his.show()
-his.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/Histogram_组间每日均分对比/His+Overall_Daily_Performance_Scores_Between_Groups.html")
+his.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/Histogram_组间每日均分对比/His+Overall_Daily_Performance_Scores_Between_Groups.html")
 
 
 
@@ -89,11 +89,11 @@ line_acc = px.line(
     color="Metric",
     markers=True,  
     title="Performance Trends - Accompanied Group",
-    labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
-
+line_acc.update_xaxes(tickmode="linear", tick0=1, dtick=1)
+line_acc.update_yaxes(range=[3.5, 8])
 line_acc.show()
-line_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
+line_acc.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
 
 # LineCharts - 无陪伴组
 line_non_acc = px.line(
@@ -103,8 +103,8 @@ line_non_acc = px.line(
     color="Metric",
     markers=True,  
     title="Performance Trends - Non-Accompanied Group",
-    labels={"Days": "Days", "Mean Score": "Mean Score"},
 )
-
+line_non_acc.update_xaxes(tickmode="linear", tick0=1, dtick=1)
+line_non_acc.update_yaxes(range=[3.5, 8])
 line_non_acc.show()
-line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/G10_CTB_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
+line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
