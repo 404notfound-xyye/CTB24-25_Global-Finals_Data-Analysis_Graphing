@@ -1,5 +1,5 @@
-# G10_CTB_Global-Finals_Data-Analysis
-CTB2425 - Gloabl Finals - Data Analysis Part - Graphing Code
+# CTB24-25_Global-Finals_Data-Analysis_Graphing
+CTB24-25 - Gloabl Finals - Data Analysis - Graphing Code
 
 ---
 
