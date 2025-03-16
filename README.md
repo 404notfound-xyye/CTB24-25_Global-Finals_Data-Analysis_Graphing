@@ -1,7 +1,11 @@
 # G10_CTB_Global-Finals_Data-Analysis
-CTB2425 - Gloabl Finals - Data Analysis Part - Code
+CTB2425 - Gloabl Finals - Data Analysis Part - Graphing Code
 
 ---
+
+### Graphing 
+
+Graphing Library: `Plotly Python`
 
 Main Program: `Charts_Main.py`
 
