@@ -90,8 +90,10 @@ line_acc = px.line(
     markers=True,  
     title="Performance Trends - Accompanied Group",
 )
-line_acc.update_xaxes(tickmode="linear", tick0=1, dtick=1)
-line_acc.update_yaxes(range=[3.5, 8])
+
+line_acc.update_xaxes(tickmode="linear", tick0=1, dtick=1)  # X-axis：保留整数Days
+line_acc.update_yaxes(range=[3.5, 8])   # Y-axis：两组范围一致
+
 line_acc.show()
 line_acc.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+WITH.html")
 
@@ -104,7 +106,9 @@ line_non_acc = px.line(
     markers=True,  
     title="Performance Trends - Non-Accompanied Group",
 )
-line_non_acc.update_xaxes(tickmode="linear", tick0=1, dtick=1)
-line_non_acc.update_yaxes(range=[3.5, 8])
+
+line_non_acc.update_xaxes(tickmode="linear", tick0=1, dtick=1)  # X-axis：保留整数Days
+line_non_acc.update_yaxes(range=[3.5, 8])    # Y-axis：两组范围一致
+
 line_non_acc.show()
 line_non_acc.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-Analysis_ChartsResult/LineCharts_每日方面表现变化/Line+PerformanceTrends+NON.html")
