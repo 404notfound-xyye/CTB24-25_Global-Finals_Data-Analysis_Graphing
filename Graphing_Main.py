@@ -91,7 +91,9 @@ line_acc = px.line(
     title="Performance Trends - Accompanied Group",
 )
 line_acc.update_xaxes(      # X-axis：保留整数Days
-    tickmode="linear", tick0=1, dtick=1
+    tickmode="linear", 
+    tick0=1, 
+    dtick=1
 )
 line_acc.update_yaxes(      # Y-axis：两组范围一致
     range=[3.5, 8]
