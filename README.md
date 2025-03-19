@@ -22,3 +22,5 @@ Main Program: `Graphing_Main.py`
     - https://github.com/plotly/Kaleido
 - Pandas: Python data analysis toolkit
     - https://github.com/pandas-dev/pandas
+- numby: The fundamental package for scientific computing with Python.
+    - https://github.com/numpy/numpy
