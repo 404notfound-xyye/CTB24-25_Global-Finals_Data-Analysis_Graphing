@@ -1,5 +1,8 @@
 # CTB24-25_Global-Finals_Data-Analysis_Graphing
-CTB24-25 - Gloabl Finals - Data Analysis - Graphing Code
+
+CTB 24-25 Global Finals
+
+Graph v.2 using Plotly (v.1 using SPSS)
 
 ---
 
@@ -15,7 +18,7 @@ Main Program: `Graphing_Main.py`
 
 ### Dependencies
 
-- Python
+- Python 3
 - Plotly: Graphing Library
     - https://github.com/plotly/plotly.py 
 - kaleido: Static image export
