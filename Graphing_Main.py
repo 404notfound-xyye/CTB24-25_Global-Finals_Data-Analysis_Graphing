@@ -79,7 +79,7 @@ dt_long = dt_mean.melt(     # 转换长格式，让每个metrics和days/group对
     value_name="Mean Score"  # 对应每个metric的分数
 )
 dt_accompanied = dt_long[dt_long["Group"] == "Accompanied Group"]   # 提取陪伴组数据
-dt_non_accompanied = dt_long[dt_long["Group"] == "Non-Accompanied Group"] # 提取非陪伴组数据
+dt_non_accompanied = dt_long[dt_long["Group"] == "Control Group"] # 提取非陪伴组数据
 
 # LineCharts - 陪伴组
 line_acc = px.line(
@@ -109,7 +109,7 @@ line_non_acc = px.line(
     y="Mean Score", 
     color="Metric",
     markers=True,  
-    title="Performance Trends - Non-Accompanied Group",
+    title="Performance Trends - Control Group",
 )
 line_non_acc.update_xaxes(      # X-axis：保留整数Days
     tickmode="linear", 
