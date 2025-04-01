@@ -13,11 +13,11 @@ print(dt.describe())
 bar_c = px.bar(
     dt, 
     x="Participant Number", 
-    y="Difference in Mean Performance Scores Pre- and Post-Intervention", 
+    y="Difference in Mean Performance Scores", 
     color="Group",
     title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",
     barmode='group',
-    text="Difference in Mean Performance Scores Pre- and Post-Intervention"
+    text="Difference in Mean Performance Scores"
 )
 bar_c.update_traces(
     texttemplate='%{text:.2f}', # 保留两位小数
@@ -36,7 +36,7 @@ bar_c.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Dat
 box_p = px.box(
     dt, 
     x="Group", 
-    y="Difference in Mean Performance Scores Pre- and Post-Intervention",
+    y="Difference in Mean Performance Scores",
     title="Difference in Mean Performance Scores Pre- and Post-Intervention Between Groups",
     points="all"
 )
@@ -50,7 +50,7 @@ box_p.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Dat
 his = px.histogram(
     dt,
     x="Days",
-    y="Overall Daily Performance Mean Score",
+    y="Overall Daily Performance",
     color="Group",
     title="Overall Daily Performance Scores Between Groups",
     barmode='group',
@@ -65,11 +65,11 @@ his.write_html("/Users/alex.y/Documents/Github_Repo/CTB24-25_Global-Finals_Data-
 
 # LineCharts - 每日方面表现变化
 metrics = [     # 折线绘制数据（列）
-    "Learning Behaviors and Classroom Adaptation Mean Score",
-    "Social Interaction Mean Score",
-    "Emotion Regulation Mean Score",
-    "Repetitive Behaviors and Interests Mean Score",
-    "Overall Daily Performance Mean Score"
+    "Learning Behaviors and Classroom Adaptation",
+    "Social Interaction",
+    "Emotion Regulation",
+    "Repetitive Behaviors and Interests",
+    "Overall Daily Performance"
 ]
 dt_mean = dt.groupby(["Days", "Group"], as_index=False)[metrics].mean() # 按Days/Group分组+计算分组中metrics列均值
 dt_long = dt_mean.melt(     # 转换长格式，让每个metrics和days/group对应一行
